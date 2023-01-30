@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 
 class Toc extends Component {
+	//shouldComponentUpdate는 아래 두개의 파라미터를 기본적으로 받는다.
+	//return 값이 false면 render가 호출되지 않음
+	shouldComponentUpdate(newProps, newState) {
+		console.log(' ==== TOC render shouldComponentUpdate ===='); 
+		if (this.props.data === newProps.data) { //기존데이터가 새로운 데이터가 같다면..
+			return false;
+		}
+		return true;
+	}
+
 	render() {
 		var lists = [];
 		var data = this.props.data;
